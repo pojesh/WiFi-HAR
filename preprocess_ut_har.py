@@ -4,7 +4,7 @@
 import os, numpy as np
 import torch
 
-ROOT = r"C:\Users\Arun AM\WiFi-CSI-Sensing-Benchmark\Benchmark\Data\UT_HAR"  # <-- change this
+ROOT = "Data\UT_HAR"  # <-- change this
 
 def load_split(name):
     X = np.load(os.path.join(ROOT, "data", f"X_{name}.csv"))   # NumPy binary despite .csv
