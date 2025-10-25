@@ -1,0 +1,161 @@
+{
+  "total_sequences": 270,
+  "total_frames": 80190,
+  "frame_shape": [
+    3,
+    114,
+    10
+  ],
+  "subjects": {
+    "S01": {
+      "sequences": 27,
+      "frames": 8019
+    },
+    "S02": {
+      "sequences": 27,
+      "frames": 8019
+    },
+    "S03": {
+      "sequences": 27,
+      "frames": 8019
+    },
+    "S04": {
+      "sequences": 27,
+      "frames": 8019
+    },
+    "S05": {
+      "sequences": 27,
+      "frames": 8019
+    },
+    "S06": {
+      "sequences": 27,
+      "frames": 8019
+    },
+    "S07": {
+      "sequences": 27,
+      "frames": 8019
+    },
+    "S08": {
+      "sequences": 27,
+      "frames": 8019
+    },
+    "S09": {
+      "sequences": 27,
+      "frames": 8019
+    },
+    "S10": {
+      "sequences": 27,
+      "frames": 8019
+    }
+  },
+  "activities": {
+    "A01": {
+      "sequences": 10,
+      "frames": 2970
+    },
+    "A02": {
+      "sequences": 10,
+      "frames": 2970
+    },
+    "A03": {
+      "sequences": 10,
+      "frames": 2970
+    },
+    "A04": {
+      "sequences": 10,
+      "frames": 2970
+    },
+    "A05": {
+      "sequences": 10,
+      "frames": 2970
+    },
+    "A06": {
+      "sequences": 10,
+      "frames": 2970
+    },
+    "A07": {
+      "sequences": 10,
+      "frames": 2970
+    },
+    "A08": {
+      "sequences": 10,
+      "frames": 2970
+    },
+    "A09": {
+      "sequences": 10,
+      "frames": 2970
+    },
+    "A10": {
+      "sequences": 10,
+      "frames": 2970
+    },
+    "A11": {
+      "sequences": 10,
+      "frames": 2970
+    },
+    "A12": {
+      "sequences": 10,
+      "frames": 2970
+    },
+    "A13": {
+      "sequences": 10,
+      "frames": 2970
+    },
+    "A14": {
+      "sequences": 10,
+      "frames": 2970
+    },
+    "A15": {
+      "sequences": 10,
+      "frames": 2970
+    },
+    "A16": {
+      "sequences": 10,
+      "frames": 2970
+    },
+    "A17": {
+      "sequences": 10,
+      "frames": 2970
+    },
+    "A18": {
+      "sequences": 10,
+      "frames": 2970
+    },
+    "A19": {
+      "sequences": 10,
+      "frames": 2970
+    },
+    "A20": {
+      "sequences": 10,
+      "frames": 2970
+    },
+    "A21": {
+      "sequences": 10,
+      "frames": 2970
+    },
+    "A22": {
+      "sequences": 10,
+      "frames": 2970
+    },
+    "A23": {
+      "sequences": 10,
+      "frames": 2970
+    },
+    "A24": {
+      "sequences": 10,
+      "frames": 2970
+    },
+    "A25": {
+      "sequences": 10,
+      "frames": 2970
+    },
+    "A26": {
+      "sequences": 10,
+      "frames": 2970
+    },
+    "A27": {
+      "sequences": 10,
+      "frames": 2970
+    }
+  }
+}
