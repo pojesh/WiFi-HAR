@@ -1,0 +1,79 @@
+# MM-Fi toolbox-driven dataset, WiFi-CSI only
+dataset_root: C:/Users/Pojesh/Documents/project1/working/mmfi
+output_root: ./runs
+experiment_name: vit_mmfi_e01
+
+seed: 42
+device: cuda
+
+mmfi:
+  modality: wifi-csi
+  data_unit: sequence
+  protocol: protocol3          # anything except 'protocol1' or 'protocol2' => all 27 actions
+  split_to_use: manual_split
+  manual_split:
+    train_dataset:
+      subjects: [S01, S02, S03, S04, S05, S06, S07, S08, S09, S10]
+      actions:  [A01, A02, A03, A04, A05, A06, A07, A08, A09, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27]
+    val_dataset:
+      subjects: []             # empty is allowed; decode_config handles it
+      actions:  [A01, A02, A03, A04, A05, A06, A07, A08, A09, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27]
+
+# Spectrogram parameters
+spectrogram:
+  n_fft: 128
+  win_length: 96
+  hop_length: 32
+  window: hann
+  power: 2.0
+  log_eps: 1.0e-6
+  k_pcs: 4        # fewer PCs speeds up caching; you can raise to 8 later
+  normalize: instance
+
+cache:
+  enable: true
+  format: npy     # switch from zarr to npy (single file per sample)
+  root: ./runs/cache/mmfi_e01
+  overwrite: true # set true for this run to refresh; set back to false later
+
+# Model (ViT-Tiny-ish, 8GB-safe)
+model:
+  name: vit_csi
+  embed_dim: 192
+  depth: 8
+  num_heads: 3
+  mlp_ratio: 4.0
+  drop_rate: 0.1
+  attn_drop_rate: 0.1
+  patch:
+    freq: 5
+    time: 5
+  cls_token: true
+  rel_pos_2d: false      # start with abs 2D pos; can toggle to rel
+
+# Optimization
+optim:
+  epochs: 20
+  batch_size: 8
+  lr: 3.0e-4
+  weight_decay: 0.05
+  betas: [0.9, 0.999]
+  warmup_epochs: 5
+  cosine_lr: true
+  amp: true
+  grad_accum_steps: 1
+  grad_clip_norm: 1.0
+  checkpoint_interval: 5
+
+# Evaluation
+evaluation:
+  metrics: [accuracy, macro_f1]
+  save_cm: true
+  cm_normalize: true
+
+# Adversarial subject-invariance (DANN)
+adv:
+  enable: true
+  lambda: 0.1         # gradient reversal scale
+  schedule: linear     # linear|constant
+  subject_classes: 10  # S01..S10 in E01
