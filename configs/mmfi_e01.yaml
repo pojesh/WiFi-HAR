@@ -1,7 +1,7 @@
 # MM-Fi toolbox-driven dataset, WiFi-CSI only
 dataset_root: C:/Users/Pojesh/Documents/project1/working/mmfi
 output_root: ./runs
-experiment_name: vit_mmfi_e01
+experiment_name: vit_mmfi_e01_adv_loso
 
 seed: 42
 device: cuda
@@ -21,20 +21,21 @@ mmfi:
 
 # Spectrogram parameters
 spectrogram:
-  n_fft: 128
-  win_length: 96
-  hop_length: 32
+  n_fft: 256
+  win_length: 192
+  hop_length: 96
   window: hann
   power: 2.0
   log_eps: 1.0e-6
   k_pcs: 4        # fewer PCs speeds up caching; you can raise to 8 later
   normalize: instance
+  merge_packets_to_time: true
 
 cache:
   enable: true
   format: npy     # switch from zarr to npy (single file per sample)
   root: ./runs/cache/mmfi_e01
-  overwrite: true # set true for this run to refresh; set back to false later
+  overwrite: false # set true for this run to refresh; set back to false later
 
 # Model (ViT-Tiny-ish, 8GB-safe)
 model:
@@ -46,15 +47,15 @@ model:
   drop_rate: 0.1
   attn_drop_rate: 0.1
   patch:
-    freq: 5
-    time: 5
+    freq: 8
+    time: 4
   cls_token: true
   rel_pos_2d: false      # start with abs 2D pos; can toggle to rel
 
 # Optimization
 optim:
-  epochs: 20
-  batch_size: 8
+  epochs: 80
+  batch_size: 6
   lr: 3.0e-4
   weight_decay: 0.05
   betas: [0.9, 0.999]
