@@ -1,0 +1,55 @@
+# Subject discovery specific configuration
+# Inherits from base_config.yaml
+
+dataset:
+  name: UT-HAR
+  root: ./data/UTD-HAR
+  num_classes: 7
+  seq_length: 250
+  num_features: 90
+  train_split: 0.8
+  val_split: 0.1
+  test_split: 0.1
+
+model:
+  name: CSISignatureNet
+  input_dim: 90          # Added
+  seq_len: 250          # Added
+  hidden_dim: 256       # Added
+  dropout: 0.3          # Added
+  latent_subjects: 5
+  signature_dim: 256
+  temperature: 0.1
+
+training:
+  batch_size: 16
+  epochs: 100
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  scheduler:
+    type: cosine
+    warmup_epochs: 5
+  
+losses:
+  activity_weight: 1.0
+  subject_weight: 0.5
+  entropy_weight: 0.1
+  disentangle_weight: 0.3
+  
+subject_discovery:
+  temporal_window: 10
+  min_cluster_size: 20
+  prototype_momentum: 0.99
+  
+experiment:
+  name: subject_discovery_v1
+  description: "Discovering hidden subjects in UT-HAR using contrastive learning"
+
+logging:
+  tensorboard: true
+  save_frequency: 10
+  log_frequency: 50
+
+seed: 42
+device: cuda
+num_workers: 0
