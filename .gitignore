@@ -1,2 +1,16 @@
-# data folder
-Data/
+
+#PYCACHE
+__pychache__/
+X_train.csv
+
+csi-fingerprinting/src/__pycache__/
+csi-fingerprinting/src/datasets/__pycache__/
+csi-fingerprinting/src/evaluation/__pycache__/
+csi-fingerprinting/src/losses/__pycache__/
+csi-fingerprinting/src/models/__pycache__/
+csi-fingerprinting/src/trainers/__pycache__/
+UTHAR/dataloader/__pycache__/
+UTHAR/models/__pycache__/
+
+# DATA FOLDER
+UTHAR/UT_HAR/
