@@ -1,0 +1,12 @@
+{
+    "silhouette_score": "-0.037024938",
+    "davies_bouldin": 12.07270969247947,
+    "subject_activity_independence": 0.8973183335112479,
+    "temporal_consistency": 0.47183673469387755,
+    "subject_entropy": 1.5719146092705492,
+    "subject_entropy_normalized": 0.9766854608844144,
+    "activity_accuracy": 0.978,
+    "activity_f1": 0.9652668464343568,
+    "loss": 0.13990179531283076,
+    "accuracy": 97.8
+}
