@@ -316,7 +316,8 @@ class AdversarialTrainer:
             all_labels,
             all_preds,
             target_names=Config.DAILY_ACTIVITIES,
-            digits=4
+            digits=4,
+            zero_division=0
         )
         
         # Save results
