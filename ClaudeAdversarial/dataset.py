@@ -173,7 +173,7 @@ def create_data_loaders(
         indices = np.arange(len(dataset))
         np.random.shuffle(indices)
         
-        test_size = int(len(indices) * 0.2)
+        test_size = int(len(indices) * 0.1)
         val_size = int(len(indices) * val_split)
         
         test_indices = indices[:test_size]

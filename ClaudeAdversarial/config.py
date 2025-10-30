@@ -84,24 +84,24 @@ class Config:
     GRU_NUM_LAYERS = 1
     
     # Dropout rate
-    DROPOUT_RATE = 0.5
+    DROPOUT_RATE = 0.65 #0.5
     
     # ==================== Training Configuration ====================
     # Basic training parameters
     BATCH_SIZE = 16
     LEARNING_RATE = 1e-3
-    WEIGHT_DECAY = 1e-5
-    NUM_EPOCHS = 10
+    WEIGHT_DECAY = 1e-4 #1e-5
+    NUM_EPOCHS = 20
     
     # Validation split (for non-LOSO experiments)
-    VAL_SPLIT = 0.25
+    VAL_SPLIT = 0.20
     
     # Early stopping patience
     EARLY_STOPPING_PATIENCE = 10
     
     # Learning rate scheduler
     LR_SCHEDULER = 'ReduceLROnPlateau'
-    LR_SCHEDULER_PATIENCE = 5
+    LR_SCHEDULER_PATIENCE = 3
     LR_SCHEDULER_FACTOR = 0.5
     
     # ==================== Adversarial Training Configuration ====================
