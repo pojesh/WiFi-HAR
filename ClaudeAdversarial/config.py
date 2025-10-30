@@ -59,10 +59,10 @@ class Config:
     
     # ==================== Preprocessing Configuration ====================
     # Window size for temporal segmentation
-    WINDOW_SIZE = 256
+    WINDOW_SIZE = 100 #256
     
     # Step size for sliding window (50% overlap)
-    STEP_SIZE = 128
+    STEP_SIZE = 50 #128
     
     # CSI data dimensions (from MMFi dataset)
     NUM_ANTENNAS = 3
@@ -91,10 +91,10 @@ class Config:
     BATCH_SIZE = 16
     LEARNING_RATE = 1e-3
     WEIGHT_DECAY = 1e-5
-    NUM_EPOCHS = 50
+    NUM_EPOCHS = 10
     
     # Validation split (for non-LOSO experiments)
-    VAL_SPLIT = 0.2
+    VAL_SPLIT = 0.25
     
     # Early stopping patience
     EARLY_STOPPING_PATIENCE = 10
