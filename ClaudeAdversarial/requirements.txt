@@ -1,0 +1,24 @@
+--extra-index-url https://download.pytorch.org/whl/cu126
+torch==2.7.0+cu126
+torchvision
+torchaudio
+
+# Scientific Computing
+numpy>=1.21.0
+scipy>=1.7.0
+pandas>=1.3.0
+
+# Visualization
+matplotlib>=3.4.0
+seaborn>=0.11.0
+
+# Machine Learning
+scikit-learn>=1.0.0
+
+# Utilities
+tqdm>=4.62.0
+tensorboard>=2.8.0
+
+# Optional but recommended
+jupyter>=1.0.0
+ipython>=7.30.0

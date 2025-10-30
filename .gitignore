@@ -14,3 +14,14 @@ UTHAR/models/__pycache__/
 
 # DATA FOLDER
 UTHAR/UT_HAR/
+
+# other folders
+csi-bert/
+csi-fingerprinting/
+Data/
+mmficnngru/
+
+
+#claude
+ClaudeAdversarial/results/base_model/checkpoints/
+ClaudeAdversarial/__pycache__/

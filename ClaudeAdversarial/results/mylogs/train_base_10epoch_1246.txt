@@ -1,0 +1,87 @@
+PS C:\Users\Pojesh\Documents\GitHub\WiFi-HAR\ClaudeAdversarial> python train_base.py --epochs 10
+================================================================================
+Configuration Settings
+================================================================================
+
+Paths:
+  RAW_DATA_ROOT: C:\Users\Pojesh\Documents\project1\working\mmfi\E01
+  PROCESSED_DATA_ROOT: data\processed_mmfi_window
+  RESULTS_ROOT: results
+
+Dataset:
+  NUM_ACTIVITIES: 14
+  NUM_SUBJECTS: 10
+  WINDOW_SIZE: 256
+  STEP_SIZE: 128
+
+Model:
+  INPUT_CHANNELS: 3
+  GRU_HIDDEN_SIZE: 128
+  DROPOUT_RATE: 0.5
+
+Training:
+  BATCH_SIZE: 16
+  LEARNING_RATE: 0.001
+  NUM_EPOCHS: 50
+
+Adversarial:
+  ADVERSARIAL_LAMBDA: 0.1
+  GRL_ALPHA: 1.0
+  PROGRESSIVE_ADVERSARIAL: True
+
+Experiment:
+  EXPERIMENT_NAME: wifi_har_adversarial
+  EXPERIMENT_MODE: base
+  CV_MODE: standard
+================================================================================
+2025-10-31 00:45:09,340 - INFO - Using device: cuda:0
+2025-10-31 00:45:09,342 - INFO - Loading data...
+2025-10-31 00:45:09,345 - INFO - Loaded dataset with 140 samples
+2025-10-31 00:45:09,345 - INFO - Data split: Train=84, Val=28, Test=28
+2025-10-31 00:45:09,345 - INFO - Creating model...
+2025-10-31 00:45:09,363 - INFO - Initialized CNNGRUBase: Conv2D out=1792, Conv1D in=5376, GRU hidden=128
+2025-10-31 00:45:09,450 - INFO - Initialized trainer for base_model
+2025-10-31 00:45:09,450 - INFO - Model parameters: 5,136,814
+2025-10-31 00:45:09,451 - INFO - Starting training...
+2025-10-31 00:45:10,507 - INFO - Starting training for 10 epochs
+Epoch 1: 100%|████████████████████████████████████████████████████████████████| 6/6 [00:01<00:00,  3.82it/s, loss=2.69]
+2025-10-31 00:45:12,253 - INFO - Epoch 1/10 - Train Loss: 1.6816, Train Acc: 0.0238 | Val Loss: 0.5266, Val Acc: 0.1071
+2025-10-31 00:45:12,282 - INFO - ✓ Saved best model (Val Acc: 0.1071)
+Epoch 2: 100%|████████████████████████████████████████████████████████████████| 6/6 [00:01<00:00,  4.75it/s, loss=2.38]
+2025-10-31 00:45:13,708 - INFO - Epoch 2/10 - Train Loss: 1.4082, Train Acc: 0.2619 | Val Loss: 0.5326, Val Acc: 0.0714
+Epoch 3: 100%|████████████████████████████████████████████████████████████████| 6/6 [00:01<00:00,  4.80it/s, loss=2.47]
+2025-10-31 00:45:15,127 - INFO - Epoch 3/10 - Train Loss: 1.3056, Train Acc: 0.3095 | Val Loss: 0.5276, Val Acc: 0.0714
+Epoch 4: 100%|████████████████████████████████████████████████████████████████| 6/6 [00:01<00:00,  4.80it/s, loss=1.89]
+2025-10-31 00:45:16,551 - INFO - Epoch 4/10 - Train Loss: 1.2020, Train Acc: 0.3214 | Val Loss: 0.5430, Val Acc: 0.0714
+Epoch 5: 100%|████████████████████████████████████████████████████████████████| 6/6 [00:01<00:00,  4.75it/s, loss=2.27]
+2025-10-31 00:45:17,988 - INFO - Epoch 5/10 - Train Loss: 1.0835, Train Acc: 0.4405 | Val Loss: 0.5488, Val Acc: 0.0714
+Epoch 6: 100%|█████████████████████████████████████████████████████████████████| 6/6 [00:01<00:00,  4.68it/s, loss=2.5]
+2025-10-31 00:45:19,438 - INFO - Epoch 6/10 - Train Loss: 1.0535, Train Acc: 0.4762 | Val Loss: 0.5557, Val Acc: 0.0714
+Epoch 7: 100%|████████████████████████████████████████████████████████████████| 6/6 [00:01<00:00,  4.67it/s, loss=1.46]
+2025-10-31 00:45:20,896 - INFO - Epoch 7/10 - Train Loss: 0.8854, Train Acc: 0.6071 | Val Loss: 0.5722, Val Acc: 0.0357
+Epoch 8: 100%|████████████████████████████████████████████████████████████████| 6/6 [00:01<00:00,  4.76it/s, loss=1.31]
+2025-10-31 00:45:22,325 - INFO - Epoch 8/10 - Train Loss: 0.7815, Train Acc: 0.7381 | Val Loss: 0.5595, Val Acc: 0.0357
+Epoch 9: 100%|███████████████████████████████████████████████████████████████| 6/6 [00:01<00:00,  4.76it/s, loss=0.982]
+2025-10-31 00:45:23,752 - INFO - Epoch 9/10 - Train Loss: 0.7034, Train Acc: 0.7738 | Val Loss: 0.5446, Val Acc: 0.0714
+Epoch 10: 100%|███████████████████████████████████████████████████████████████| 6/6 [00:01<00:00,  4.79it/s, loss=1.13]
+2025-10-31 00:45:25,169 - INFO - Epoch 10/10 - Train Loss: 0.5974, Train Acc: 0.8333 | Val Loss: 0.5554, Val Acc: 0.0714
+2025-10-31 00:45:25,170 - INFO - Training complete! Best Val Acc: 0.1071 at epoch 1
+2025-10-31 00:45:25,170 - INFO - Evaluating on test set...
+2025-10-31 00:45:25,206 - INFO - Loaded best model for evaluation
+Testing: 100%|███████████████████████████████████████████████████████████████████████████| 2/2 [00:00<00:00, 12.18it/s]
+C:\Users\Pojesh\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages\sklearn\metrics\_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+C:\Users\Pojesh\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages\sklearn\metrics\_classification.py:1565: UndefinedMetricWarning: Recall is ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+Traceback (most recent call last):
+  File "C:\Users\Pojesh\Documents\GitHub\WiFi-HAR\ClaudeAdversarial\train_base.py", line 428, in <module>
+    main()
+  File "C:\Users\Pojesh\Documents\GitHub\WiFi-HAR\ClaudeAdversarial\train_base.py", line 422, in main
+    results = trainer.evaluate(test_loader)
+  File "C:\Users\Pojesh\Documents\GitHub\WiFi-HAR\ClaudeAdversarial\train_base.py", line 261, in evaluate
+    report = classification_report(
+  File "C:\Users\Pojesh\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages\sklearn\utils\_param_validation.py", line 216, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Pojesh\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages\sklearn\metrics\_classification.py", line 2693, in classification_report
+    raise ValueError(
+ValueError: Number of classes, 13, does not match size of target_names, 14. Try specifying the labels parameter
