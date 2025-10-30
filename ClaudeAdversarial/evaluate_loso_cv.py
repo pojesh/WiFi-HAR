@@ -96,8 +96,7 @@ class LOSOCrossValidator:
             optimizer,
             mode='max',
             factor=Config.LR_SCHEDULER_FACTOR,
-            patience=Config.LR_SCHEDULER_PATIENCE,
-            verbose=False
+            patience=Config.LR_SCHEDULER_PATIENCE
         )
         
         best_val_acc = 0.0
