@@ -84,14 +84,14 @@ class Config:
     GRU_NUM_LAYERS = 1
     
     # Dropout rate
-    DROPOUT_RATE = 0.65 #0.5
+    DROPOUT_RATE = 0.65
     
     # ==================== Training Configuration ====================
     # Basic training parameters
     BATCH_SIZE = 16
     LEARNING_RATE = 1e-3
     WEIGHT_DECAY = 1e-4 #1e-5
-    NUM_EPOCHS = 20
+    NUM_EPOCHS = 30
     
     # Validation split (for non-LOSO experiments)
     VAL_SPLIT = 0.20
@@ -109,7 +109,7 @@ class Config:
     DOMAIN_HIDDEN_SIZE = 256
     
     # Adversarial loss weight (lambda parameter)
-    ADVERSARIAL_LAMBDA = 0.1
+    ADVERSARIAL_LAMBDA = 0.05
     
     # Gradient reversal layer alpha (for DANN)
     GRL_ALPHA = 1.0
@@ -141,7 +141,7 @@ class Config:
     FIGURE_DPI = 300
     
     # Color scheme
-    COLOR_SCHEME = 'viridis'
+    COLOR_SCHEME = 'Blues'
     
     # ==================== Reproducibility Configuration ====================
     # Random seed for reproducibility
@@ -172,10 +172,10 @@ class Config:
     EXPERIMENT_NAME = 'wifi_har_adversarial'
     
     # Experiment mode: 'base' or 'adversarial'
-    EXPERIMENT_MODE = 'base'
+    EXPERIMENT_MODE = 'adversarial'
     
     # Cross-validation mode: 'standard' or 'loso'
-    CV_MODE = 'standard'
+    CV_MODE = 'loso'
     
     @classmethod
     def create_directories(cls):

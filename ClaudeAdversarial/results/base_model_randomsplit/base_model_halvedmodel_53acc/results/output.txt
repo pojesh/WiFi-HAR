@@ -1,0 +1,136 @@
+PS C:\Users\Pojesh\Documents\GitHub\WiFi-HAR\ClaudeAdversarial> python train_base.py --epochs 20
+================================================================================
+Configuration Settings
+================================================================================
+
+Paths:
+  RAW_DATA_ROOT: C:\Users\Pojesh\Documents\project1\working\mmfi\E01
+  PROCESSED_DATA_ROOT: data\processed_mmfi_window
+  RESULTS_ROOT: results
+
+Dataset:
+  NUM_ACTIVITIES: 14
+  NUM_SUBJECTS: 10
+  WINDOW_SIZE: 100
+  STEP_SIZE: 50
+
+Model:
+  INPUT_CHANNELS: 3
+  GRU_HIDDEN_SIZE: 64
+  DROPOUT_RATE: 0.5
+
+Training:
+  BATCH_SIZE: 16
+  LEARNING_RATE: 0.001
+  NUM_EPOCHS: 20
+
+Adversarial:
+  ADVERSARIAL_LAMBDA: 0.1
+  GRL_ALPHA: 1.0
+  PROGRESSIVE_ADVERSARIAL: True
+
+Experiment:
+  EXPERIMENT_NAME: wifi_har_adversarial
+  EXPERIMENT_MODE: base
+  CV_MODE: standard
+================================================================================
+2025-10-31 04:00:49,082 - INFO - Using device: cuda:0
+2025-10-31 04:00:49,083 - INFO - Loading data...
+2025-10-31 04:00:49,086 - INFO - Loaded dataset with 560 samples
+2025-10-31 04:00:49,086 - INFO - Data split: Train=392, Val=112, Test=56
+2025-10-31 04:00:49,087 - INFO - Creating model...
+2025-10-31 04:00:49,094 - INFO - Initialized CNNGRUBase: Conv2D out=896, Conv1D in=2688, GRU hidden=64
+2025-10-31 04:00:49,180 - INFO - Initialized trainer for base_model
+2025-10-31 04:00:49,180 - INFO - Model parameters: 1,285,214
+2025-10-31 04:00:49,180 - INFO - Starting training...
+2025-10-31 04:00:50,791 - INFO - Starting training for 20 epochs
+Epoch 1: 100%|██████████████████████████████████████████████████████████████| 25/25 [00:02<00:00, 12.35it/s, loss=2.56]
+2025-10-31 04:00:53,022 - INFO - Epoch 1/20 - Train Loss: 1.7856, Train Acc: 0.1403 | Val Loss: 0.4931, Val Acc: 0.1875
+2025-10-31 04:00:53,032 - INFO - ✓ Saved best model (Val Acc: 0.1875)
+Epoch 2: 100%|██████████████████████████████████████████████████████████████| 25/25 [00:01<00:00, 16.72it/s, loss=2.48]
+2025-10-31 04:00:54,727 - INFO - Epoch 2/20 - Train Loss: 1.5810, Train Acc: 0.2423 | Val Loss: 0.4473, Val Acc: 0.2679
+2025-10-31 04:00:54,741 - INFO - ✓ Saved best model (Val Acc: 0.2679)
+Epoch 3: 100%|█████████████████████████████████████████████████████████████████| 25/25 [00:01<00:00, 16.71it/s, loss=2]
+2025-10-31 04:00:56,431 - INFO - Epoch 3/20 - Train Loss: 1.4123, Train Acc: 0.3622 | Val Loss: 0.3973, Val Acc: 0.3393
+2025-10-31 04:00:56,439 - INFO - ✓ Saved best model (Val Acc: 0.3393)
+Epoch 4: 100%|██████████████████████████████████████████████████████████████| 25/25 [00:01<00:00, 16.77it/s, loss=2.22]
+2025-10-31 04:00:58,129 - INFO - Epoch 4/20 - Train Loss: 1.2234, Train Acc: 0.4770 | Val Loss: 0.4443, Val Acc: 0.2054
+Epoch 5: 100%|██████████████████████████████████████████████████████████████| 25/25 [00:01<00:00, 16.90it/s, loss=1.48]
+2025-10-31 04:00:59,811 - INFO - Epoch 5/20 - Train Loss: 1.0765, Train Acc: 0.5332 | Val Loss: 0.3505, Val Acc: 0.4018
+2025-10-31 04:00:59,819 - INFO - ✓ Saved best model (Val Acc: 0.4018)
+Epoch 6: 100%|██████████████████████████████████████████████████████████████| 25/25 [00:01<00:00, 16.83it/s, loss=1.26]
+2025-10-31 04:01:01,499 - INFO - Epoch 6/20 - Train Loss: 0.9265, Train Acc: 0.6301 | Val Loss: 0.3944, Val Acc: 0.3393
+Epoch 7: 100%|██████████████████████████████████████████████████████████████| 25/25 [00:01<00:00, 16.90it/s, loss=1.29]
+2025-10-31 04:01:03,179 - INFO - Epoch 7/20 - Train Loss: 0.7423, Train Acc: 0.7526 | Val Loss: 0.3422, Val Acc: 0.4196
+2025-10-31 04:01:03,185 - INFO - ✓ Saved best model (Val Acc: 0.4196)
+Epoch 8: 100%|█████████████████████████████████████████████████████████████| 25/25 [00:01<00:00, 16.98it/s, loss=0.862]
+2025-10-31 04:01:04,847 - INFO - Epoch 8/20 - Train Loss: 0.5664, Train Acc: 0.8571 | Val Loss: 0.3261, Val Acc: 0.4464
+2025-10-31 04:01:04,855 - INFO - ✓ Saved best model (Val Acc: 0.4464)
+Epoch 9: 100%|█████████████████████████████████████████████████████████████| 25/25 [00:01<00:00, 17.10it/s, loss=0.674]
+2025-10-31 04:01:06,512 - INFO - Epoch 9/20 - Train Loss: 0.3782, Train Acc: 0.9286 | Val Loss: 0.2763, Val Acc: 0.5000
+2025-10-31 04:01:06,520 - INFO - ✓ Saved best model (Val Acc: 0.5000)
+Epoch 10: 100%|████████████████████████████████████████████████████████████| 25/25 [00:01<00:00, 16.83it/s, loss=0.358]
+2025-10-31 04:01:08,207 - INFO - Epoch 10/20 - Train Loss: 0.2612, Train Acc: 0.9719 | Val Loss: 0.2570, Val Acc: 0.6071
+2025-10-31 04:01:08,215 - INFO - ✓ Saved best model (Val Acc: 0.6071)
+Epoch 11: 100%|████████████████████████████████████████████████████████████| 25/25 [00:01<00:00, 16.98it/s, loss=0.561]
+2025-10-31 04:01:09,884 - INFO - Epoch 11/20 - Train Loss: 0.1833, Train Acc: 0.9796 | Val Loss: 0.2670, Val Acc: 0.5179
+Epoch 12: 100%|██████████████████████████████████████████████████████████████| 25/25 [00:01<00:00, 16.84it/s, loss=0.2]
+2025-10-31 04:01:11,568 - INFO - Epoch 12/20 - Train Loss: 0.1350, Train Acc: 0.9923 | Val Loss: 0.2872, Val Acc: 0.4643
+Epoch 13: 100%|████████████████████████████████████████████████████████████| 25/25 [00:01<00:00, 16.91it/s, loss=0.215]
+2025-10-31 04:01:13,240 - INFO - Epoch 13/20 - Train Loss: 0.0991, Train Acc: 0.9974 | Val Loss: 0.2720, Val Acc: 0.5357
+Epoch 14: 100%|████████████████████████████████████████████████████████████| 25/25 [00:01<00:00, 17.03it/s, loss=0.148]
+2025-10-31 04:01:14,903 - INFO - Epoch 14/20 - Train Loss: 0.0755, Train Acc: 0.9974 | Val Loss: 0.3084, Val Acc: 0.4911
+Epoch 15: 100%|███████████████████████████████████████████████████████████| 25/25 [00:01<00:00, 16.94it/s, loss=0.0853]
+2025-10-31 04:01:16,579 - INFO - Epoch 15/20 - Train Loss: 0.0728, Train Acc: 1.0000 | Val Loss: 0.2360, Val Acc: 0.5804
+Epoch 16: 100%|████████████████████████████████████████████████████████████| 25/25 [00:01<00:00, 16.84it/s, loss=0.105]
+2025-10-31 04:01:18,261 - INFO - Epoch 16/20 - Train Loss: 0.0558, Train Acc: 1.0000 | Val Loss: 0.2228, Val Acc: 0.5893
+Epoch 17: 100%|████████████████████████████████████████████████████████████| 25/25 [00:01<00:00, 16.85it/s, loss=0.103]
+2025-10-31 04:01:19,945 - INFO - Epoch 17/20 - Train Loss: 0.0450, Train Acc: 1.0000 | Val Loss: 0.2250, Val Acc: 0.5714
+Epoch 18: 100%|███████████████████████████████████████████████████████████| 25/25 [00:01<00:00, 16.99it/s, loss=0.0699]
+2025-10-31 04:01:21,611 - INFO - Epoch 18/20 - Train Loss: 0.0404, Train Acc: 1.0000 | Val Loss: 0.2215, Val Acc: 0.5625
+Epoch 19: 100%|███████████████████████████████████████████████████████████| 25/25 [00:01<00:00, 16.92it/s, loss=0.0821]
+2025-10-31 04:01:23,283 - INFO - Epoch 19/20 - Train Loss: 0.0372, Train Acc: 1.0000 | Val Loss: 0.2177, Val Acc: 0.5982
+Epoch 20: 100%|███████████████████████████████████████████████████████████| 25/25 [00:01<00:00, 16.98it/s, loss=0.0535]
+2025-10-31 04:01:24,950 - INFO - Epoch 20/20 - Train Loss: 0.0376, Train Acc: 1.0000 | Val Loss: 0.2183, Val Acc: 0.5804
+2025-10-31 04:01:24,950 - INFO - Training complete! Best Val Acc: 0.6071 at epoch 10
+2025-10-31 04:01:24,951 - INFO - Evaluating on test set...
+2025-10-31 04:01:24,975 - INFO - Loaded best model for evaluation
+Testing: 100%|███████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 38.39it/s]
+C:\Users\Pojesh\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages\sklearn\metrics\_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-10-31 04:01:25,090 - INFO - ================================================================================
+2025-10-31 04:01:25,091 - INFO - Test Results
+2025-10-31 04:01:25,091 - INFO - ================================================================================
+2025-10-31 04:01:25,091 - INFO - Accuracy:  0.5357
+2025-10-31 04:01:25,091 - INFO - Precision: 0.5884
+2025-10-31 04:01:25,091 - INFO - Recall:    0.5357
+2025-10-31 04:01:25,091 - INFO - F1-Score:  0.5167
+2025-10-31 04:01:25,092 - INFO - ================================================================================
+2025-10-31 04:01:25,092 - INFO -
+Classification Report:
+2025-10-31 04:01:25,092 - INFO -
+              precision    recall  f1-score   support
+
+         A02     0.7500    0.7500    0.7500         4
+         A03     0.7500    0.6000    0.6667         5
+         A04     1.0000    0.2500    0.4000         4
+         A05     0.0000    0.0000    0.0000         4
+         A13     0.6667    0.6667    0.6667         6
+         A14     1.0000    0.4000    0.5714         5
+         A17     0.4000    0.6667    0.5000         3
+         A18     0.7500    0.7500    0.7500         4
+         A19     0.4000    0.4000    0.4000         5
+         A20     0.3333    0.2500    0.2857         4
+         A21     0.0000    0.0000    0.0000         1
+         A22     0.3333    1.0000    0.5000         1
+         A23     0.6667    0.6667    0.6667         6
+         A27     0.3333    1.0000    0.5000         4
+
+    accuracy                         0.5357        56
+   macro avg     0.5274    0.5286    0.4755        56
+weighted avg     0.5884    0.5357    0.5167        56
+
+2025-10-31 04:01:25,093 - INFO - Results saved to results\base_model\results\base_model_results.json
+2025-10-31 04:01:25,642 - INFO - Confusion matrix saved to results\base_model\results\base_model_confusion_matrix.png
+2025-10-31 04:01:26,018 - INFO - Training history saved to results\base_model\results\base_model_training_history.png
+2025-10-31 04:01:26,018 - INFO - ✓ Training and evaluation complete!

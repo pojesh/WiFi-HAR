@@ -1,0 +1,138 @@
+PS C:\Users\Pojesh\Documents\GitHub\WiFi-HAR\ClaudeAdversarial> python train_adversarial.py --epochs 20 --adversarial_lambda 0.1
+================================================================================
+Configuration Settings
+================================================================================
+
+Paths:
+  RAW_DATA_ROOT: C:\Users\Pojesh\Documents\project1\working\mmfi\E01
+  PROCESSED_DATA_ROOT: data\processed_mmfi_window
+  RESULTS_ROOT: results
+
+Dataset:
+  NUM_ACTIVITIES: 14
+  NUM_SUBJECTS: 10
+  WINDOW_SIZE: 100
+  STEP_SIZE: 50
+
+Model:
+  INPUT_CHANNELS: 3
+  GRU_HIDDEN_SIZE: 128
+  DROPOUT_RATE: 0.65
+
+Training:
+  BATCH_SIZE: 16
+  LEARNING_RATE: 0.001
+  NUM_EPOCHS: 20
+
+Adversarial:
+  ADVERSARIAL_LAMBDA: 0.1
+  GRL_ALPHA: 1.0
+  PROGRESSIVE_ADVERSARIAL: True
+
+Experiment:
+  EXPERIMENT_NAME: wifi_har_adversarial
+  EXPERIMENT_MODE: adversarial
+  CV_MODE: standard
+================================================================================
+2025-10-31 04:08:03,948 - INFO - Using device: cuda:0
+2025-10-31 04:08:03,949 - INFO - Loading data...
+2025-10-31 04:08:03,953 - INFO - Loaded dataset with 560 samples
+2025-10-31 04:08:03,953 - INFO - Data split: Train=392, Val=112, Test=56
+2025-10-31 04:08:03,953 - INFO - Creating adversarial model...
+2025-10-31 04:08:03,970 - INFO - Initialized CNNGRUBase: Conv2D out=1792, Conv1D in=5376, GRU hidden=128
+2025-10-31 04:08:03,971 - INFO - Initialized DomainDiscriminator: input=128, hidden=256, domains=10
+2025-10-31 04:08:03,971 - INFO - Initialized AdversarialDANN with GRL
+2025-10-31 04:08:04,062 - INFO - Initialized adversarial trainer for adversarial_model
+2025-10-31 04:08:04,062 - INFO - Model parameters: 5,204,792
+2025-10-31 04:08:04,063 - INFO - Adversarial lambda: 0.1
+2025-10-31 04:08:04,063 - INFO - Starting adversarial training...
+2025-10-31 04:08:05,010 - INFO - Starting adversarial training for 20 epochs
+Epoch 1 (α=0.245): 100%|██████████████████████████████████| 25/25 [00:02<00:00,  9.48it/s, act_loss=2.83, dom_loss=2.6]
+2025-10-31 04:08:07,921 - INFO - Epoch 1/20 - Act Loss: 1.7899, Dom Loss: 1.7039 | Act Acc: 0.1633, Dom Acc: 0.1199 | Val Loss: 0.5151, Val Acc: 0.1071
+2025-10-31 04:08:07,944 - INFO - ✓ Saved best model (Val Acc: 0.1071)
+Epoch 2 (α=0.462): 100%|█████████████████████████████████| 25/25 [00:02<00:00, 10.74it/s, act_loss=2.32, dom_loss=2.17]
+2025-10-31 04:08:10,545 - INFO - Epoch 2/20 - Act Loss: 1.5727, Dom Loss: 1.5773 | Act Acc: 0.1913, Dom Acc: 0.1709 | Val Loss: 0.4313, Val Acc: 0.2500
+2025-10-31 04:08:10,566 - INFO - ✓ Saved best model (Val Acc: 0.2500)
+Epoch 3 (α=0.635): 100%|██████████████████████████████████| 25/25 [00:02<00:00, 10.78it/s, act_loss=2.2, dom_loss=2.44]
+2025-10-31 04:08:13,153 - INFO - Epoch 3/20 - Act Loss: 1.4033, Dom Loss: 1.5422 | Act Acc: 0.3138, Dom Acc: 0.1964 | Val Loss: 0.3914, Val Acc: 0.2768
+2025-10-31 04:08:13,176 - INFO - ✓ Saved best model (Val Acc: 0.2768)
+Epoch 4 (α=0.762): 100%|██████████████████████████████████| 25/25 [00:02<00:00, 10.80it/s, act_loss=1.5, dom_loss=2.37]
+2025-10-31 04:08:15,758 - INFO - Epoch 4/20 - Act Loss: 1.2574, Dom Loss: 1.5203 | Act Acc: 0.4184, Dom Acc: 0.2321 | Val Loss: 0.4165, Val Acc: 0.2768
+Epoch 5 (α=0.848): 100%|█████████████████████████████████| 25/25 [00:02<00:00, 10.74it/s, act_loss=1.69, dom_loss=2.49]
+2025-10-31 04:08:18,360 - INFO - Epoch 5/20 - Act Loss: 1.0824, Dom Loss: 1.5743 | Act Acc: 0.4872, Dom Acc: 0.1531 | Val Loss: 0.3597, Val Acc: 0.3839
+2025-10-31 04:08:18,382 - INFO - ✓ Saved best model (Val Acc: 0.3839)
+Epoch 6 (α=0.905): 100%|█████████████████████████████████| 25/25 [00:02<00:00, 10.80it/s, act_loss=1.26, dom_loss=2.62]
+2025-10-31 04:08:20,973 - INFO - Epoch 6/20 - Act Loss: 0.8969, Dom Loss: 1.5911 | Act Acc: 0.5969, Dom Acc: 0.1786 | Val Loss: 0.3263, Val Acc: 0.4554
+2025-10-31 04:08:20,996 - INFO - ✓ Saved best model (Val Acc: 0.4554)
+Epoch 7 (α=0.941): 100%|█████████████████████████████████| 25/25 [00:02<00:00, 10.71it/s, act_loss=1.04, dom_loss=2.44]
+2025-10-31 04:08:23,605 - INFO - Epoch 7/20 - Act Loss: 0.7085, Dom Loss: 1.6233 | Act Acc: 0.7015, Dom Acc: 0.1633 | Val Loss: 0.3040, Val Acc: 0.4196
+Epoch 8 (α=0.964): 100%|████████████████████████████████| 25/25 [00:02<00:00, 10.74it/s, act_loss=0.556, dom_loss=2.44]
+2025-10-31 04:08:26,202 - INFO - Epoch 8/20 - Act Loss: 0.5543, Dom Loss: 1.6357 | Act Acc: 0.8010, Dom Acc: 0.1505 | Val Loss: 0.3175, Val Acc: 0.4286
+Epoch 9 (α=0.978): 100%|████████████████████████████████| 25/25 [00:02<00:00, 10.76it/s, act_loss=0.394, dom_loss=2.45]
+2025-10-31 04:08:28,795 - INFO - Epoch 9/20 - Act Loss: 0.4068, Dom Loss: 1.6409 | Act Acc: 0.8673, Dom Acc: 0.1122 | Val Loss: 0.2594, Val Acc: 0.5268
+2025-10-31 04:08:28,817 - INFO - ✓ Saved best model (Val Acc: 0.5268)
+Epoch 10 (α=0.987): 100%|████████████████████████████████| 25/25 [00:02<00:00, 10.73it/s, act_loss=1.43, dom_loss=2.41]
+2025-10-31 04:08:31,423 - INFO - Epoch 10/20 - Act Loss: 0.2801, Dom Loss: 1.6801 | Act Acc: 0.9337, Dom Acc: 0.1556 | Val Loss: 0.2782, Val Acc: 0.5625
+2025-10-31 04:08:31,446 - INFO - ✓ Saved best model (Val Acc: 0.5625)
+Epoch 11 (α=0.992): 100%|███████████████████████████████| 25/25 [00:02<00:00, 10.76it/s, act_loss=0.181, dom_loss=2.55]
+2025-10-31 04:08:34,035 - INFO - Epoch 11/20 - Act Loss: 0.2357, Dom Loss: 1.6553 | Act Acc: 0.9490, Dom Acc: 0.1429 | Val Loss: 0.2669, Val Acc: 0.5357
+Epoch 12 (α=0.995): 100%|███████████████████████████████| 25/25 [00:02<00:00, 10.73it/s, act_loss=0.208, dom_loss=2.35]
+2025-10-31 04:08:36,640 - INFO - Epoch 12/20 - Act Loss: 0.1800, Dom Loss: 1.6533 | Act Acc: 0.9617, Dom Acc: 0.1199 | Val Loss: 0.2942, Val Acc: 0.5179
+Epoch 13 (α=0.997): 100%|███████████████████████████████| 25/25 [00:02<00:00, 10.76it/s, act_loss=0.215, dom_loss=2.54]
+2025-10-31 04:08:39,232 - INFO - Epoch 13/20 - Act Loss: 0.1258, Dom Loss: 1.6634 | Act Acc: 0.9872, Dom Acc: 0.1071 | Val Loss: 0.2402, Val Acc: 0.5893
+2025-10-31 04:08:39,255 - INFO - ✓ Saved best model (Val Acc: 0.5893)
+Epoch 14 (α=0.998): 100%|███████████████████████████████| 25/25 [00:02<00:00, 10.78it/s, act_loss=0.297, dom_loss=2.33]
+2025-10-31 04:08:41,852 - INFO - Epoch 14/20 - Act Loss: 0.0842, Dom Loss: 1.6566 | Act Acc: 0.9847, Dom Acc: 0.1046 | Val Loss: 0.2430, Val Acc: 0.5804
+Epoch 15 (α=0.999): 100%|██████████████████████████████| 25/25 [00:02<00:00, 10.77it/s, act_loss=0.0412, dom_loss=2.38]
+2025-10-31 04:08:44,446 - INFO - Epoch 15/20 - Act Loss: 0.0539, Dom Loss: 1.6505 | Act Acc: 1.0000, Dom Acc: 0.1020 | Val Loss: 0.2245, Val Acc: 0.6429
+2025-10-31 04:08:44,468 - INFO - ✓ Saved best model (Val Acc: 0.6429)
+Epoch 16 (α=0.999): 100%|██████████████████████████████| 25/25 [00:02<00:00, 10.76it/s, act_loss=0.0389, dom_loss=2.34]
+2025-10-31 04:08:47,066 - INFO - Epoch 16/20 - Act Loss: 0.0393, Dom Loss: 1.6340 | Act Acc: 1.0000, Dom Acc: 0.1301 | Val Loss: 0.2445, Val Acc: 0.5893
+Epoch 17 (α=1.000): 100%|██████████████████████████████| 25/25 [00:02<00:00, 10.73it/s, act_loss=0.0978, dom_loss=2.43]
+2025-10-31 04:08:49,664 - INFO - Epoch 17/20 - Act Loss: 0.0309, Dom Loss: 1.6457 | Act Acc: 1.0000, Dom Acc: 0.1097 | Val Loss: 0.2238, Val Acc: 0.6161
+Epoch 18 (α=1.000): 100%|██████████████████████████████| 25/25 [00:02<00:00, 10.74it/s, act_loss=0.0467, dom_loss=2.51]
+2025-10-31 04:08:52,264 - INFO - Epoch 18/20 - Act Loss: 0.0227, Dom Loss: 1.6410 | Act Acc: 1.0000, Dom Acc: 0.1122 | Val Loss: 0.2010, Val Acc: 0.6339
+Epoch 19 (α=1.000): 100%|███████████████████████████████| 25/25 [00:02<00:00, 10.71it/s, act_loss=0.027, dom_loss=2.32]
+2025-10-31 04:08:54,869 - INFO - Epoch 19/20 - Act Loss: 0.0193, Dom Loss: 1.6458 | Act Acc: 1.0000, Dom Acc: 0.1148 | Val Loss: 0.2059, Val Acc: 0.6429
+Epoch 20 (α=1.000): 100%|██████████████████████████████| 25/25 [00:02<00:00, 10.73it/s, act_loss=0.0225, dom_loss=2.43]
+2025-10-31 04:08:57,474 - INFO - Epoch 20/20 - Act Loss: 0.0187, Dom Loss: 1.6372 | Act Acc: 1.0000, Dom Acc: 0.1122 | Val Loss: 0.2006, Val Acc: 0.6339
+2025-10-31 04:08:57,475 - INFO - Training complete! Best Val Acc: 0.6429 at epoch 15
+2025-10-31 04:08:57,475 - INFO - Evaluating on test set...
+2025-10-31 04:08:57,503 - INFO - Loaded best model for evaluation
+Testing: 100%|███████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 29.38it/s]
+2025-10-31 04:08:57,647 - INFO - ================================================================================
+2025-10-31 04:08:57,648 - INFO - Test Results (Adversarial Model)
+2025-10-31 04:08:57,648 - INFO - ================================================================================
+2025-10-31 04:08:57,648 - INFO - Accuracy:  0.6964
+2025-10-31 04:08:57,648 - INFO - Precision: 0.7036
+2025-10-31 04:08:57,648 - INFO - Recall:    0.6964
+2025-10-31 04:08:57,648 - INFO - F1-Score:  0.6674
+2025-10-31 04:08:57,648 - INFO - ================================================================================
+2025-10-31 04:08:57,649 - INFO -
+Classification Report:
+2025-10-31 04:08:57,649 - INFO -
+              precision    recall  f1-score   support
+
+         A02     0.8000    1.0000    0.8889         4
+         A03     1.0000    1.0000    1.0000         5
+         A04     1.0000    0.7500    0.8571         4
+         A05     0.8000    1.0000    0.8889         4
+         A13     0.6667    0.3333    0.4444         6
+         A14     1.0000    0.4000    0.5714         5
+         A17     0.7500    1.0000    0.8571         3
+         A18     1.0000    0.7500    0.8571         4
+         A19     0.0000    0.0000    0.0000         5
+         A20     0.2000    0.2500    0.2222         4
+         A21     0.5000    1.0000    0.6667         1
+         A22     0.2500    1.0000    0.4000         1
+         A23     0.6667    1.0000    0.8000         6
+         A27     0.8000    1.0000    0.8889         4
+
+    accuracy                         0.6964        56
+   macro avg     0.6738    0.7488    0.6673        56
+weighted avg     0.7036    0.6964    0.6674        56
+
+2025-10-31 04:08:57,650 - INFO - Results saved to results\adversarial_model\results\adversarial_model_results.json
+2025-10-31 04:08:58,178 - INFO - Confusion matrix saved to results\adversarial_model\results\adversarial_model_confusion_matrix.png
+2025-10-31 04:08:58,909 - INFO - Training history saved to results\adversarial_model\results\adversarial_model_training_history.png
+2025-10-31 04:08:58,909 - INFO - ✓ Adversarial training and evaluation complete!
