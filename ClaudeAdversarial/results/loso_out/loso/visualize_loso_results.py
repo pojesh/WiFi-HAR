@@ -46,8 +46,8 @@ OUTPUT_DIR = Path('loso_cv_visualizations')
 OUTPUT_DIR.mkdir(exist_ok=True)
 
 
-def load_results(base_file='loso_cv_results_base_enhanced.json', 
-                 adv_file='loso_cv_results_adversarial_enhanced.json'):
+def load_results(base_file='loso_base_results.json', 
+                 adv_file='loso_adv_results.json'):
     """Load LOSO-CV results from JSON files"""
     with open(base_file, 'r') as f:
         base_results = json.load(f)
@@ -216,7 +216,7 @@ def plot_box_plots(base_results, adv_results):
     fig, ax = plt.subplots(figsize=(8, 10))
     
     data = [base_acc, adv_acc]
-    bp = ax.boxplot(data, labels=['Base Model', 'Adversarial Model'],
+    bp = ax.boxplot(data, tick_labels=['Base Model', 'Adversarial Model'], 
                     patch_artist=True, widths=0.6)
     
     # Color the boxes
@@ -401,8 +401,8 @@ def plot_comprehensive_comparison(base_results, adv_results):
     
     # Plot 4: Box plot
     ax4 = fig.add_subplot(gs[1, 1])
-    bp = ax4.boxplot([base_acc, adv_acc], labels=['Base', 'Adversarial'],
-                     patch_artist=True, widths=0.5)
+    bp = ax4.boxplot([base_acc, adv_acc], tick_labels=['Base', 'Adversarial'], 
+                     patch_artist=True, widths=0.6)
     bp['boxes'][0].set_facecolor(COLOR_BASE)
     bp['boxes'][1].set_facecolor(COLOR_ADV)
     for box in bp['boxes']:
@@ -560,4 +560,174 @@ def create_results_table(base_results, adv_results):
     for i in range(1, len(table_data)-1):
         # Accuracy improvement
         imp_val = float(table_data[i][3].strip('%+'))
-        table[(i, 3)].set_facecolor
+        if imp_val > 0:
+            table[(i, 3)].set_facecolor('#D4EDDA')
+        else:
+            table[(i, 3)].set_facecolor('#F8D7DA')
+        
+        # F1 improvement
+        f1_imp_val = float(table_data[i][6].strip('%+'))
+        if f1_imp_val > 0:
+            table[(i, 6)].set_facecolor('#D4EDDA')
+        else:
+            table[(i, 6)].set_facecolor('#F8D7DA')
+    
+    plt.title('LOSO Cross-Validation Results Summary', fontsize=16, fontweight='bold', pad=20)
+    plt.savefig(OUTPUT_DIR / 'results_table.png', dpi=FIGURE_DPI, bbox_inches='tight')
+    plt.close()
+    print("✓ Saved: results_table.png")
+
+
+def generate_summary_report(base_results, adv_results):
+    """Generate comprehensive summary report"""
+    subjects = [f['test_subject'] for f in base_results['fold_results']]
+    base_acc = [f['accuracy'] for f in base_results['fold_results']]
+    adv_acc = [f['accuracy'] for f in adv_results['fold_results']]
+    
+    # Perform statistical tests
+    t_stat, p_value = stats.ttest_rel(base_acc, adv_acc)
+    diff = np.array(adv_acc) - np.array(base_acc)
+    cohen_d = np.mean(diff) / np.std(diff, ddof=1)
+    
+    # Calculate improvements
+    base_avg = base_results['overall_metrics']['average']['accuracy']
+    adv_avg = adv_results['overall_metrics']['average']['accuracy']
+    avg_improvement = ((adv_avg - base_avg) / base_avg) * 100
+    
+    base_f1_avg = base_results['overall_metrics']['average']['f1']
+    adv_f1_avg = adv_results['overall_metrics']['average']['f1']
+    f1_improvement = ((adv_f1_avg - base_f1_avg) / base_f1_avg) * 100
+    
+    # Generate report
+    report = f"""
+    ╔══════════════════════════════════════════════════════════════════════════════╗
+    ║                    LOSO Cross-Validation Results Summary                     ║
+    ╠══════════════════════════════════════════════════════════════════════════════╣
+    ║                                                                              ║
+    ║  OVERALL PERFORMANCE METRICS:                                                ║
+    ║  ──────────────────────────────────────────────────────────────────────    ║
+    ║  Base Model Average Accuracy:     {base_avg:.4f} ± {base_results['overall_metrics']['std']['accuracy']:.4f}                      ║
+    ║  Adversarial Model Accuracy:        {adv_avg:.4f} ± {adv_results['overall_metrics']['std']['accuracy']:.4f}                      ║
+    ║  Improvement:                       {avg_improvement:+.2f}%                                              ║
+    ║                                                                              ║
+    ║  Base Model Average F1-Score:      {base_f1_avg:.4f} ± {base_results['overall_metrics']['std']['f1']:.4f}                      ║
+    ║  Adversarial Model F1-Score:       {adv_f1_avg:.4f} ± {adv_results['overall_metrics']['std']['f1']:.4f}                      ║
+    ║  F1 Improvement:                    {f1_improvement:+.2f}%                                              ║
+    ║                                                                              ║
+    ║  STATISTICAL SIGNIFICANCE:                                                   ║
+    ║  ──────────────────────────────────────────────────────────────────────    ║
+    ║  Paired t-test p-value:            {p_value:.6f}                                      ║
+    ║  Statistical Significance:          {'✓ YES' if p_value < 0.05 else '✗ NO'} ({'p < 0.05' if p_value < 0.05 else 'p ≥ 0.05'})                    ║
+    ║  Effect Size (Cohen's d):           {cohen_d:.4f} ({'Large' if abs(cohen_d) > 0.8 else 'Medium' if abs(cohen_d) > 0.5 else 'Small'})                ║
+    ║                                                                              ║
+    ║  PER-SUBJECT ANALYSIS:                                                       ║
+    ║  ──────────────────────────────────────────────────────────────────────    ║
+    ║  Subjects with improvement:        {np.sum(diff > 0)}/{len(diff)} ({np.sum(diff > 0)/len(diff)*100:.1f}%)                          ║
+    ║  Best improvement:                  {np.max(diff):.4f} ({np.max(diff)/np.mean(base_acc)*100:.2f}%)                     ║
+    ║  Worst degradation:                {np.min(diff):.4f} ({np.min(diff)/np.mean(base_acc)*100:.2f}%)                     ║
+    ║  Average improvement:               {np.mean(diff):.4f} ({np.mean(diff)/np.mean(base_acc)*100:.2f}%)                     ║
+    ║                                                                              ║
+    ║  STABILITY ANALYSIS:                                                         ║
+    ║  ──────────────────────────────────────────────────────────────────────    ║
+    ║  Base Model Std Dev:               {base_results['overall_metrics']['std']['accuracy']:.4f}                      ║
+    ║  Adversarial Model Std Dev:        {adv_results['overall_metrics']['std']['accuracy']:.4f}                      ║
+    ║  Stability Improvement:            {(1 - adv_results['overall_metrics']['std']['accuracy']/base_results['overall_metrics']['std']['accuracy'])*100:+.2f}%                                              ║
+    ║                                                                              ║
+    ╚══════════════════════════════════════════════════════════════════════════════╝
+    """
+    
+    return report
+
+
+def main():
+    """Main function to generate all visualizations"""
+    print("🚀 Starting LOSO-CV Results Visualization...")
+    print("=" * 60)
+    
+    # Set style
+    set_style()
+    
+    # Load results
+    print("📊 Loading results...")
+    try:
+        base_results, adv_results = load_results()
+    except FileNotFoundError as e:
+        print(f"❌ Error: Could not find results files. Make sure you have:")
+        print("   - loso_cv_results_base_enhanced.json")
+        print("   - loso_cv_results_adversarial_enhanced.json")
+        print("\n💡 Tip: Run the LOSO-CV evaluation first to generate these files.")
+        return
+    
+    print(f"✓ Loaded {len(base_results['fold_results'])} folds for base model")
+    print(f"✓ Loaded {len(adv_results['fold_results'])} folds for adversarial model")
+    
+    # Generate all visualizations
+    print("\n📈 Generating visualizations...")
+    
+    print("1. Per-subject accuracy comparison...")
+    plot_per_subject_accuracy(base_results, adv_results)
+    
+    print("2. Overall metrics comparison...")
+    plot_metrics_comparison(base_results, adv_results)
+    
+    print("3. Improvement analysis...")
+    plot_improvement_analysis(base_results, adv_results)
+    
+    print("4. Box plots...")
+    plot_box_plots(base_results, adv_results)
+    
+    print("5. Per-class accuracy...")
+    plot_per_class_accuracy(base_results, adv_results)
+    
+    print("6. Variance comparison...")
+    plot_variance_comparison(base_results, adv_results)
+    
+    print("7. Comprehensive comparison...")
+    plot_comprehensive_comparison(base_results, adv_results)
+    
+    print("8. Statistical significance analysis...")
+    plot_statistical_significance(base_results, adv_results)
+    
+    print("9. Results table...")
+    create_results_table(base_results, adv_results)
+    
+    # Generate summary report
+    print("\n📝 Generating summary report...")
+    report = generate_summary_report(base_results, adv_results)
+    print(report)
+    
+    # Save report to file
+    report_file = OUTPUT_DIR / 'summary_report.txt'
+    with open(report_file, 'w', encoding='utf-8') as f:
+        f.write(report)
+    print(f"✓ Saved summary report to: {report_file}")
+    
+    print("\n" + "=" * 60)
+    print(f"🎉 Visualization complete! All files saved to: {OUTPUT_DIR}")
+    print("📁 Generated files:")
+    
+    generated_files = [
+        'per_subject_accuracy_comparison.png',
+        'metrics_comparison.png',
+        'per_subject_improvement.png',
+        'accuracy_distribution_boxplot.png',
+        'per_activity_accuracy.png',
+        'variance_comparison.png',
+        'comprehensive_comparison.png',
+        'statistical_significance.png',
+        'results_table.png',
+        'summary_report.txt'
+    ]
+    
+    for file in generated_files:
+        print(f"   - {file}")
+    
+    print("\n🎯 Next steps:")
+    print("   1. Review the generated visualizations")
+    print("   2. Check the summary report for key insights")
+    print("   3. Use the comprehensive comparison for presentations")
+    print("   4. Share the results table for detailed analysis")
+
+
+if __name__ == "__main__":
+    main()

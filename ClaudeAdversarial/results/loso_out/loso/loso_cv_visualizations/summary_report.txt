@@ -1,0 +1,36 @@
+
+    ╔══════════════════════════════════════════════════════════════════════════════╗
+    ║                    LOSO Cross-Validation Results Summary                     ║
+    ╠══════════════════════════════════════════════════════════════════════════════╣
+    ║                                                                              ║
+    ║  OVERALL PERFORMANCE METRICS:                                                ║
+    ║  ──────────────────────────────────────────────────────────────────────    ║
+    ║  Base Model Average Accuracy:     0.6884 ± 0.0312                      ║
+    ║  Adversarial Model Accuracy:        0.7813 ± 0.0256                      ║
+    ║  Improvement:                       +13.50%                                              ║
+    ║                                                                              ║
+    ║  Base Model Average F1-Score:      0.6821 ± 0.0314                      ║
+    ║  Adversarial Model F1-Score:       0.7758 ± 0.0258                      ║
+    ║  F1 Improvement:                    +13.74%                                              ║
+    ║                                                                              ║
+    ║  STATISTICAL SIGNIFICANCE:                                                   ║
+    ║  ──────────────────────────────────────────────────────────────────────    ║
+    ║  Paired t-test p-value:            0.000000                                      ║
+    ║  Statistical Significance:          ✓ YES (p < 0.05)                    ║
+    ║  Effect Size (Cohen's d):           14.8838 (Large)                ║
+    ║                                                                              ║
+    ║  PER-SUBJECT ANALYSIS:                                                       ║
+    ║  ──────────────────────────────────────────────────────────────────────    ║
+    ║  Subjects with improvement:        10/10 (100.0%)                          ║
+    ║  Best improvement:                  0.0983 (14.28%)                     ║
+    ║  Worst degradation:                0.0804 (11.68%)                     ║
+    ║  Average improvement:               0.0929 (13.49%)                     ║
+    ║                                                                              ║
+    ║  STABILITY ANALYSIS:                                                         ║
+    ║  ──────────────────────────────────────────────────────────────────────    ║
+    ║  Base Model Std Dev:               0.0312                      ║
+    ║  Adversarial Model Std Dev:        0.0256                      ║
+    ║  Stability Improvement:            +17.95%                                              ║
+    ║                                                                              ║
+    ╚══════════════════════════════════════════════════════════════════════════════╝
+    
