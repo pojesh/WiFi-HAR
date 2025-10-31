@@ -1,0 +1,28 @@
+Kimi: # Summary – Base and Adversarial
+*(same 1 120-window subset, 64-frame windows, 30 epochs, 16-batch, cuda)*
+
+---
+
+### Configuration (identical except λ)
+| Key | Value |
+|-----|-------|
+| **Raw data** | MMFi E01 |
+| **Windows** | 1 120 total (train 784 / val 224 / test 112) |
+| **Window length** | 64 |
+| **Step** | 32 |
+| **Model** | CNN-GRU (5.1 M params) |
+| **LR** | 1e-3 |
+| **λ (adv only)** | 0.05 |
+
+---
+
+### Results
+| Model | Test Acc | Test F1 | Best Val Acc | Domain Acc (train) | Δ vs Base |
+|-------|----------|---------|--------------|--------------------|-----------|
+| **Base** | 97.3 % | 97.3 % | 97.8 % | — | 0 pp |
+| **Adversarial (λ=0.05)** | 93.8 % | 93.8 % | 95.6 % | ≈ 14 % | **–3.5 pp** |
+
+---
+
+### One-sentence Description
+With **identical, mixed-subject data**, forcing subject-invariant features **costs 3-4 pp** in accuracy while driving the domain discriminator to random performance—**no benefit appears until subjects are explicitly disjoint (LOSO)**.

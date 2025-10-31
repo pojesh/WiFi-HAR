@@ -172,7 +172,7 @@ class Config:
     EXPERIMENT_NAME = 'wifi_har_adversarial'
     
     # Experiment mode: 'base' or 'adversarial'
-    EXPERIMENT_MODE = 'base'
+    EXPERIMENT_MODE = 'adversarial'
     
     # Cross-validation mode: 'standard' or 'loso'
     CV_MODE = 'standard'
