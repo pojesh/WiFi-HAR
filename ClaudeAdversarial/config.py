@@ -59,10 +59,10 @@ class Config:
     
     # ==================== Preprocessing Configuration ====================
     # Window size for temporal segmentation
-    WINDOW_SIZE = 100 #256
+    WINDOW_SIZE = 64 #100 
     
     # Step size for sliding window (50% overlap)
-    STEP_SIZE = 50 #128
+    STEP_SIZE = 32 #50 
     
     # CSI data dimensions (from MMFi dataset)
     NUM_ANTENNAS = 3
@@ -172,10 +172,10 @@ class Config:
     EXPERIMENT_NAME = 'wifi_har_adversarial'
     
     # Experiment mode: 'base' or 'adversarial'
-    EXPERIMENT_MODE = 'adversarial'
+    EXPERIMENT_MODE = 'base'
     
     # Cross-validation mode: 'standard' or 'loso'
-    CV_MODE = 'loso'
+    CV_MODE = 'standard'
     
     @classmethod
     def create_directories(cls):
