@@ -212,10 +212,10 @@ class LOSOCrossValidator:
                 all_preds.extend(preds.cpu().numpy())
                 all_labels.extend(activity_labels.cpu().numpy())
         
-        # Compute metrics
+        # Compute metrics with zero_division=0 to handle undefined metrics
         accuracy = accuracy_score(all_labels, all_preds)
         precision, recall, f1, _ = precision_recall_fscore_support(
-            all_labels, all_preds, average='weighted'
+            all_labels, all_preds, average='weighted', zero_division=0
         )
         
         logger.info(
@@ -311,7 +311,7 @@ class LOSOCrossValidator:
         # Overall metrics using all predictions
         overall_accuracy = accuracy_score(self.all_labels, self.all_predictions)
         overall_precision, overall_recall, overall_f1, _ = precision_recall_fscore_support(
-            self.all_labels, self.all_predictions, average='weighted'
+            self.all_labels, self.all_predictions, average='weighted', zero_division=0
         )
         
         self.overall_metrics = {
@@ -519,13 +519,14 @@ def create_comparison_plot(base_validator, adv_validator):
     
     # Plot 2: Overall metrics comparison
     metrics = ['Accuracy', 'Precision', 'Recall', 'F1-Score']
+    metric_keys = ['accuracy', 'precision', 'recall', 'f1']  # Correct key mapping
     base_values = [
-        base_validator.overall_metrics['average'][m.lower().replace('-', '_')] 
-        for m in metrics
+        base_validator.overall_metrics['average'][key] 
+        for key in metric_keys
     ]
     adv_values = [
-        adv_validator.overall_metrics['average'][m.lower().replace('-', '_')] 
-        for m in metrics
+        adv_validator.overall_metrics['average'][key] 
+        for key in metric_keys
     ]
     
     x = np.arange(len(metrics))

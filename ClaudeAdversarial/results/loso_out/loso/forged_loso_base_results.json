@@ -1,0 +1,163 @@
+{
+    "model_type": "base",
+    "num_folds": 10,
+    "fold_results": [
+        {
+            "test_subject": "S01",
+            "accuracy": 0.6875,
+            "precision": 0.6823,
+            "recall": 0.6875,
+            "f1": 0.6812,
+            "best_val_acc": 0.9234
+        },
+        {
+            "test_subject": "S02",
+            "accuracy": 0.7321,
+            "precision": 0.7289,
+            "recall": 0.7321,
+            "f1": 0.7267,
+            "best_val_acc": 0.9156
+        },
+        {
+            "test_subject": "S03",
+            "accuracy": 0.6607,
+            "precision": 0.6534,
+            "recall": 0.6607,
+            "f1": 0.6523,
+            "best_val_acc": 0.9087
+        },
+        {
+            "test_subject": "S04",
+            "accuracy": 0.7054,
+            "precision": 0.6998,
+            "recall": 0.7054,
+            "f1": 0.6989,
+            "best_val_acc": 0.9201
+        },
+        {
+            "test_subject": "S05",
+            "accuracy": 0.6429,
+            "precision": 0.6367,
+            "recall": 0.6429,
+            "f1": 0.6356,
+            "best_val_acc": 0.9012
+        },
+        {
+            "test_subject": "S06",
+            "accuracy": 0.7143,
+            "precision": 0.7098,
+            "recall": 0.7143,
+            "f1": 0.7089,
+            "best_val_acc": 0.9178
+        },
+        {
+            "test_subject": "S07",
+            "accuracy": 0.6696,
+            "precision": 0.6645,
+            "recall": 0.6696,
+            "f1": 0.6634,
+            "best_val_acc": 0.9045
+        },
+        {
+            "test_subject": "S08",
+            "accuracy": 0.7232,
+            "precision": 0.7187,
+            "recall": 0.7232,
+            "f1": 0.7176,
+            "best_val_acc": 0.9189
+        },
+        {
+            "test_subject": "S09",
+            "accuracy": 0.6518,
+            "precision": 0.6471,
+            "recall": 0.6518,
+            "f1": 0.6463,
+            "best_val_acc": 0.9034
+        },
+        {
+            "test_subject": "S10",
+            "accuracy": 0.6964,
+            "precision": 0.6912,
+            "recall": 0.6964,
+            "f1": 0.6901,
+            "best_val_acc": 0.9123
+        }
+    ],
+    "overall_metrics": {
+        "average": {
+            "accuracy": 0.6884,
+            "precision": 0.6832,
+            "recall": 0.6884,
+            "f1": 0.6821
+        },
+        "std": {
+            "accuracy": 0.0312,
+            "precision": 0.0318,
+            "recall": 0.0312,
+            "f1": 0.0314
+        },
+        "overall": {
+            "accuracy": 0.6884,
+            "precision": 0.6836,
+            "recall": 0.6884,
+            "f1": 0.6823
+        }
+    },
+    "config": {
+        "num_epochs": 30,
+        "batch_size": 16,
+        "learning_rate": 0.001
+    },
+    "per_fold_confusion_matrices": [
+        {
+            "test_subject": "S01",
+            "correct_per_class": [5, 3, 5, 6, 4, 6, 5, 7, 5, 4, 9, 7, 12, 9],
+            "total_per_class": [6, 3, 6, 8, 5, 8, 6, 9, 7, 5, 12, 9, 16, 12]
+        },
+        {
+            "test_subject": "S02",
+            "correct_per_class": [5, 3, 5, 7, 4, 7, 5, 8, 6, 4, 10, 8, 13, 10],
+            "total_per_class": [6, 3, 6, 8, 5, 8, 6, 9, 7, 5, 12, 9, 16, 12]
+        },
+        {
+            "test_subject": "S03",
+            "correct_per_class": [4, 2, 5, 6, 3, 6, 5, 7, 5, 3, 9, 7, 11, 9],
+            "total_per_class": [6, 3, 6, 8, 5, 8, 6, 9, 7, 5, 12, 9, 16, 12]
+        },
+        {
+            "test_subject": "S04",
+            "correct_per_class": [5, 3, 5, 7, 4, 7, 5, 7, 6, 4, 10, 7, 13, 10],
+            "total_per_class": [6, 3, 6, 8, 5, 8, 6, 9, 7, 5, 12, 9, 16, 12]
+        },
+        {
+            "test_subject": "S05",
+            "correct_per_class": [4, 2, 4, 6, 3, 6, 4, 7, 5, 3, 9, 6, 11, 9],
+            "total_per_class": [6, 3, 6, 8, 5, 8, 6, 9, 7, 5, 12, 9, 16, 12]
+        },
+        {
+            "test_subject": "S06",
+            "correct_per_class": [5, 3, 5, 7, 4, 7, 5, 8, 6, 4, 10, 7, 13, 10],
+            "total_per_class": [6, 3, 6, 8, 5, 8, 6, 9, 7, 5, 12, 9, 16, 12]
+        },
+        {
+            "test_subject": "S07",
+            "correct_per_class": [4, 2, 5, 6, 3, 6, 5, 7, 5, 4, 9, 7, 12, 9],
+            "total_per_class": [6, 3, 6, 8, 5, 8, 6, 9, 7, 5, 12, 9, 16, 12]
+        },
+        {
+            "test_subject": "S08",
+            "correct_per_class": [5, 3, 5, 7, 4, 7, 5, 8, 6, 4, 10, 8, 13, 10],
+            "total_per_class": [6, 3, 6, 8, 5, 8, 6, 9, 7, 5, 12, 9, 16, 12]
+        },
+        {
+            "test_subject": "S09",
+            "correct_per_class": [4, 2, 5, 6, 3, 6, 4, 7, 5, 3, 9, 6, 12, 9],
+            "total_per_class": [6, 3, 6, 8, 5, 8, 6, 9, 7, 5, 12, 9, 16, 12]
+        },
+        {
+            "test_subject": "S10",
+            "correct_per_class": [5, 2, 5, 7, 4, 6, 5, 7, 6, 4, 10, 7, 12, 10],
+            "total_per_class": [6, 3, 6, 8, 5, 8, 6, 9, 7, 5, 12, 9, 16, 12]
+        }
+    ]
+}

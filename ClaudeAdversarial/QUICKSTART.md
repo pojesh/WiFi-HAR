@@ -123,7 +123,7 @@ This will:
 
 ### Option B: Full Pipeline (For Publication)
 
-**Time**: ~8-12 hours  
+**Time**: ~2 hours  
 **Purpose**: Get best results for paper
 
 ```bash
@@ -145,10 +145,10 @@ Perfect if you want to run each step separately:
 python preprocess_data.py
 
 # Step 2: Train base model
-python train_base.py --epochs 50
+python train_base.py --epochs 30
 
 # Step 3: Train adversarial model
-python train_adversarial.py --epochs 50 --adversarial_lambda 0.1
+python train_adversarial.py --epochs 30 --adversarial_lambda 0.05
 
 # Step 4: Run LOSO-CV
 python evaluate_loso_cv.py --model_type both --epochs 30
@@ -200,7 +200,7 @@ results/
    - `results/base_model/results/base_model_confusion_matrix.png`
    - `results/adversarial_model/results/adversarial_model_confusion_matrix.png`
 
-### Expected Results
+### Expected Results (Not real values)
 
 **Base Model (LOSO-CV)**:
 - Average Accuracy: 65-75%

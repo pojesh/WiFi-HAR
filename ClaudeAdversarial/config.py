@@ -175,7 +175,7 @@ class Config:
     EXPERIMENT_MODE = 'adversarial'
     
     # Cross-validation mode: 'standard' or 'loso'
-    CV_MODE = 'standard'
+    CV_MODE = 'loso'
     
     @classmethod
     def create_directories(cls):

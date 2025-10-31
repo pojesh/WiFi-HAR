@@ -179,9 +179,8 @@ python preprocess_data.py \
 ```bash
 python train_base.py \
     --labels_csv data/processed_mmfi_window/labels.csv \
-    --epochs 50 \
-    --batch_size 32 \
-    --lr 0.001 \
+    --epochs 30 \
+    --batch_size 16 \
     --experiment_name my_base_model
 ```
 
@@ -189,10 +188,9 @@ python train_base.py \
 ```bash
 python train_adversarial.py \
     --labels_csv data/processed_mmfi_window/labels.csv \
-    --epochs 50 \
-    --batch_size 32 \
-    --lr 0.001 \
-    --adversarial_lambda 0.1 \
+    --epochs 30 \
+    --batch_size 16 \
+    --adversarial_lambda 0.05 \
     --experiment_name my_adv_model
 ```
 
@@ -261,7 +259,7 @@ Total Loss = Activity Loss + λ × Domain Loss
 
 ## 📈 Results
 
-### Expected Performance
+### Expected Performance (not real values)
 
 Based on research literature, you should achieve:
 

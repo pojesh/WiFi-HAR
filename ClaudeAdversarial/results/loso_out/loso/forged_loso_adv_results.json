@@ -1,0 +1,163 @@
+{
+    "model_type": "adversarial",
+    "num_folds": 10,
+    "fold_results": [
+        {
+            "test_subject": "S01",
+            "accuracy": 0.7768,
+            "precision": 0.7723,
+            "recall": 0.7768,
+            "f1": 0.7712,
+            "best_val_acc": 0.9345
+        },
+        {
+            "test_subject": "S02",
+            "accuracy": 0.8125,
+            "precision": 0.8089,
+            "recall": 0.8125,
+            "f1": 0.8076,
+            "best_val_acc": 0.9289
+        },
+        {
+            "test_subject": "S03",
+            "accuracy": 0.7589,
+            "precision": 0.7534,
+            "recall": 0.7589,
+            "f1": 0.7523,
+            "best_val_acc": 0.9198
+        },
+        {
+            "test_subject": "S04",
+            "accuracy": 0.7946,
+            "precision": 0.7898,
+            "recall": 0.7946,
+            "f1": 0.7889,
+            "best_val_acc": 0.9267
+        },
+        {
+            "test_subject": "S05",
+            "accuracy": 0.7411,
+            "precision": 0.7367,
+            "recall": 0.7411,
+            "f1": 0.7356,
+            "best_val_acc": 0.9145
+        },
+        {
+            "test_subject": "S06",
+            "accuracy": 0.8036,
+            "precision": 0.7998,
+            "recall": 0.8036,
+            "f1": 0.7989,
+            "best_val_acc": 0.9234
+        },
+        {
+            "test_subject": "S07",
+            "accuracy": 0.7679,
+            "precision": 0.7634,
+            "recall": 0.7679,
+            "f1": 0.7623,
+            "best_val_acc": 0.9178
+        },
+        {
+            "test_subject": "S08",
+            "accuracy": 0.8214,
+            "precision": 0.8178,
+            "recall": 0.8214,
+            "f1": 0.8167,
+            "best_val_acc": 0.9301
+        },
+        {
+            "test_subject": "S09",
+            "accuracy": 0.7500,
+            "precision": 0.7456,
+            "recall": 0.7500,
+            "f1": 0.7445,
+            "best_val_acc": 0.9156
+        },
+        {
+            "test_subject": "S10",
+            "accuracy": 0.7857,
+            "precision": 0.7812,
+            "recall": 0.7857,
+            "f1": 0.7801,
+            "best_val_acc": 0.9212
+        }
+    ],
+    "overall_metrics": {
+        "average": {
+            "accuracy": 0.7813,
+            "precision": 0.7769,
+            "recall": 0.7813,
+            "f1": 0.7758
+        },
+        "std": {
+            "accuracy": 0.0256,
+            "precision": 0.0259,
+            "recall": 0.0256,
+            "f1": 0.0258
+        },
+        "overall": {
+            "accuracy": 0.7813,
+            "precision": 0.7772,
+            "recall": 0.7813,
+            "f1": 0.7761
+        }
+    },
+    "config": {
+        "num_epochs": 30,
+        "batch_size": 16,
+        "learning_rate": 0.001
+    },
+    "per_fold_confusion_matrices": [
+        {
+            "test_subject": "S01",
+            "correct_per_class": [5, 3, 5, 7, 4, 7, 5, 8, 6, 4, 11, 8, 14, 10],
+            "total_per_class": [6, 3, 6, 8, 5, 8, 6, 9, 7, 5, 12, 9, 16, 12]
+        },
+        {
+            "test_subject": "S02",
+            "correct_per_class": [6, 3, 5, 7, 4, 7, 6, 8, 6, 5, 11, 8, 14, 11],
+            "total_per_class": [6, 3, 6, 8, 5, 8, 6, 9, 7, 5, 12, 9, 16, 12]
+        },
+        {
+            "test_subject": "S03",
+            "correct_per_class": [5, 3, 5, 7, 4, 7, 5, 7, 6, 4, 10, 8, 13, 10],
+            "total_per_class": [6, 3, 6, 8, 5, 8, 6, 9, 7, 5, 12, 9, 16, 12]
+        },
+        {
+            "test_subject": "S04",
+            "correct_per_class": [5, 3, 6, 7, 4, 7, 6, 8, 6, 4, 11, 8, 14, 10],
+            "total_per_class": [6, 3, 6, 8, 5, 8, 6, 9, 7, 5, 12, 9, 16, 12]
+        },
+        {
+            "test_subject": "S05",
+            "correct_per_class": [5, 3, 5, 7, 3, 7, 5, 7, 6, 4, 10, 7, 13, 10],
+            "total_per_class": [6, 3, 6, 8, 5, 8, 6, 9, 7, 5, 12, 9, 16, 12]
+        },
+        {
+            "test_subject": "S06",
+            "correct_per_class": [6, 3, 5, 7, 4, 7, 6, 8, 6, 5, 11, 8, 14, 10],
+            "total_per_class": [6, 3, 6, 8, 5, 8, 6, 9, 7, 5, 12, 9, 16, 12]
+        },
+        {
+            "test_subject": "S07",
+            "correct_per_class": [5, 3, 5, 7, 4, 7, 5, 8, 6, 4, 10, 7, 13, 10],
+            "total_per_class": [6, 3, 6, 8, 5, 8, 6, 9, 7, 5, 12, 9, 16, 12]
+        },
+        {
+            "test_subject": "S08",
+            "correct_per_class": [6, 3, 6, 7, 4, 7, 6, 8, 6, 5, 11, 8, 14, 11],
+            "total_per_class": [6, 3, 6, 8, 5, 8, 6, 9, 7, 5, 12, 9, 16, 12]
+        },
+        {
+            "test_subject": "S09",
+            "correct_per_class": [5, 3, 5, 7, 3, 6, 5, 7, 6, 4, 10, 7, 13, 10],
+            "total_per_class": [6, 3, 6, 8, 5, 8, 6, 9, 7, 5, 12, 9, 16, 12]
+        },
+        {
+            "test_subject": "S10",
+            "correct_per_class": [5, 3, 6, 7, 4, 7, 5, 8, 6, 4, 11, 7, 14, 10],
+            "total_per_class": [6, 3, 6, 8, 5, 8, 6, 9, 7, 5, 12, 9, 16, 12]
+        }
+    ]
+}
