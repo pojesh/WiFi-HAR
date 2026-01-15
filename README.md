@@ -455,5 +455,3 @@ This implementation is based on:
 - MMFi Dataset by Yang et al.
 - SenseFi Benchmark by Yang et al.
 - PyTorch Deep Learning Framework
-
-**Good luck with your research publication!** 🚀
